@@ -1,44 +1,12 @@
-from django.shortcuts import render
-from django.http  import HttpResponse
+from django.shortcuts import render,redirect
+from django.http  import HttpResponse,Http404
 import datetime as dt
+from .models import Image , Location
 
 # Create your views here.
-def welcome(request):
-    return HttpResponse('Welcome to the Persoanl Gallery where you can view different photos ')
 
-def Photos_of_day(request):
-    date = dt.date.today()
-    html = f'''
-        <html>
-            <body>
-                <h1> {date.day}-{date.month}-{date.year}</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)
+def index(request):
+    images = Image.objects.all()
+    locations = Location.objects.all()
+    return render(request,'index.html',{'images':images,'locations':locations})
 
-
-def convert_dates(dates):
-
-    # Function that gets the weekday number for the date.
-    day_number = dt.date.weekday(dates)
-
-    days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',"Sunday"]
-
-    # Returning the actual day of the week
-    day = days[day_number]
-    return day
-
-def Photos_of_day(request):
-    date = dt.date.today()
-
-    # FUNCTION TO CONVERT DATE OBJECT TO FIND EXACT DAY
-    day = convert_dates(date)
-    html = f'''
-        <html>
-            <body>
-                <h1>Photos for {day} {date.day}-{date.month}-{date.year}</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)
