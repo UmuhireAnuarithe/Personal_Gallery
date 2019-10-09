@@ -6,6 +6,29 @@
     Sign up for either our Elementary Paragraph Writing,
     Middle School Paragraph Writing or High School Paragraph Writing course for 1-to-1 guidance.</p>
 
-    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz-_1nwZxwNm_X1og8H9usiEqH5g_chRxJpdm4uSwjibTaDTAV'>
-{% endblock %}
+    <div class="container">
+
+        <!-- Looping through news   -->
+        {% for images_item in images %}
+      
+        <div class="row">
+          <!-- displaying images -->
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <h2 class="text-center"> {{ images_item.name }} </h2>
+          </div>
+          <!--Display news Article images  -->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <img src="{{images_item.image.url}}" class="img-responsive" alt="Image">
+      </div>
+  
+          {% empty %}
+          <div class="row">
+            <h2 class="text-center">There No News Items</h2>
+          </div>
+          {% endfor %}
+        
+        </div>
+        
+        {% endblock %}
+ 
 
