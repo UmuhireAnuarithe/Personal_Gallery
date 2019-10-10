@@ -8,7 +8,7 @@ class Location(models.Model):
 
 
 class Category(models.Model):
-    lacation = models.CharField(max_length =60)
+    category = models.CharField(max_length =60)
     
     
 class Image(models.Model):
@@ -21,6 +21,6 @@ class Image(models.Model):
     # location = models.ForeignKey(Location)
     
     @classmethod
-    def search_by_name(cls,search_term):
-        Photos = cls.objects.filter(name__icontains=search_term)
+    def search_by_category(cls,search_term):
+        Photos = cls.objects.filter(category__category=search_term)
         return Photos

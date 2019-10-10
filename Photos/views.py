@@ -8,13 +8,15 @@ from .models import Image , Location
 def index(request):
     images = Image.objects.all()
     locations = Location.objects.all()
-    return render(request,'index.html',{'images':images,'locations':locations})
+    categories = Category.objects.all()
+    
+    return render(request,'index.html',{'images':images,'locations':locations,'categories':categories})
 
 def search_results(request):
 
     if 'image' in request.GET and request.GET["image"]:
         search_term = request.GET.get("image")
-        searched_images = Image.search_by_name(search_term)
+        searched_images = Image.search_by_category(search_term)
         message = f"{search_term}"
 
         return render(request, 'all_Photos/search.html',{"message":message,"images": searched_images})
@@ -22,3 +24,6 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'all_Photos/search.html',{"message":message})
+
+
+
