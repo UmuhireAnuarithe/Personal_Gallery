@@ -27,3 +27,14 @@ def search_results(request):
 
 
 
+def display_location(request, location):
+
+    try:
+        location = Location.objects.get(id = location_id)
+        images = Location.objects.filter(location = location.id).all()
+    except ValueError:
+        # Raise 404 error when ValueError is thrown
+        raise Http404()
+        assert False
+
+    return render(request, 'all_Photos/location.html', {"location": location,'images':images})
