@@ -27,3 +27,9 @@ class Image(models.Model):
 
     def save_image(self):
         self.save()
+
+    def update_image(self):
+        self.update()
+
+    def delete(self):
+        self.delete()
