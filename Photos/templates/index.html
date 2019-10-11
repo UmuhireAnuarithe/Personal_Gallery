@@ -16,14 +16,16 @@
             <div class="modal-header">
               
               <h5 class="modal-name" id="imageTitle">{{image.name}}</h5>
-              
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
               <img src="{{image.image.url}}" style="width:570px; height:500px;" alt="Image">
               <br>
-              <p>{{image.description}}</p>
-              <p>{{image.category}}</p>
-              <p> {{image.location}}</p>
+              <p> Description : {{image.description}}</p>
+              <p> Category : {{image.category}}</p>
+              <p> Location : {{image.location}}</p>
               
             </div>
            

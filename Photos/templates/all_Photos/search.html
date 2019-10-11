@@ -15,11 +15,10 @@
 
     {% if images %}
       {% for image in images %}
-        <div class="col-sm-6 col-md-6">
-            <h1>{{image.name}}</h1>
-        </div> 
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <img src="{{image.image.url}}" class="img-responsive" alt="Image">
+      
+        <h1>{{image.name}}</h1> 
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <img src="{{image.image.url}}" class="img-responsive" alt="Image" height="350" width="400">
         </div>
     
       {% endfor %}

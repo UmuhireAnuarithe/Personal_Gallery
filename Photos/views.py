@@ -40,6 +40,3 @@ def display_location(request, location):
     return render(request, 'all_Photos/location.html', {"location": location,'images':images})
 
 
-def picture(request,image_id):
-    image = Image.objects.get(id = image_id)
-    return render(request,"all_Photos/picture.html", {"image":image})
