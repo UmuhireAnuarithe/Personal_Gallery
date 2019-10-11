@@ -4,7 +4,10 @@ from django.db import models
 
 
 class Location(models.Model):
-    lacation = models.CharField(max_length =60)
+    location = models.CharField(max_length =60)
+
+    def save_location(self):
+        self.save()
 
 
 class Category(models.Model):
