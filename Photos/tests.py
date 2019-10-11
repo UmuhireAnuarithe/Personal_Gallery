@@ -64,3 +64,34 @@ class LocationTestClass(TestCase):
         location = Location.objects.filter(location='Burera').first()
         locations = Location.objects.filter(id =location.id).delete()
         locations =Location.objects.all()
+
+
+class CategoryTestClass(TestCase):
+
+    # Set up method
+    def setUp(self):
+        self.animal= Category(category='Animal')
+        # Testing  instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.animal,Category))
+
+    def test_save_category(self):
+        self.car = Category(category='Cars')
+        self.car.save_category()
+        cars =Category.objects.all()
+        self.assertTrue(len(cars)>0)
+    
+    def test_update_category(self):
+        self.food = Category(category='Pizza')
+        self.food.save_category()
+        pizza =Category.objects.filter(category='Pizza').first()
+        update= Category.objects.filter(id=pizza.id).update(category='Cassava')
+        updated = Category.objects.filter(category='Cassava').first()
+        self.assertNotEqual(pizza.category , updated.category)
+
+    def test_delete_category(self):
+        self.banana = Category(category='Fruit')
+        self.banana.save_category()
+        banana = Category.objects.filter(category='Fruit').first()
+        fruits = Category.objects.filter(id =banana.id).delete()
+        fruits =Category.objects.all()

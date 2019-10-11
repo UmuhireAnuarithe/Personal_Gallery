@@ -5,15 +5,37 @@ from django.db import models
 
 class Location(models.Model):
     location = models.CharField(max_length =60)
+     
+    def __str__(self):
+        return self.location
 
     def save_location(self):
         self.save()
+    
+    
+    def update_location(self):
+        self.update()
 
+    def delete_location(self):
+        self.delete()
 
 class Category(models.Model):
     category = models.CharField(max_length =60)
     
+    def __str__(self):
+        return self.category
+        
     
+    def save_category(self):
+        self.save()
+
+    
+    def update_category(self):
+        self.update()
+
+    def delete_category(self):
+        self.delete()
+
 class Image(models.Model):
     image = models.ImageField(upload_to = 'images/')
     name = models.CharField(max_length =30)
@@ -22,7 +44,9 @@ class Image(models.Model):
     category = models.ForeignKey(Category,null= True)
     # pub_date = models.DateTimeField(auto_now_add=True)
     # location = models.ForeignKey(Location)
-    
+    def __str__(self):
+        return self.name
+        
     @classmethod
     def search_by_category(cls,search_term):
         Photos = cls.objects.filter(category__category=search_term)

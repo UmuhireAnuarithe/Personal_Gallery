@@ -8,14 +8,20 @@
 
     <div class="container">
 
-        <!-- Looping through news   -->
-        {% for images_item in images %}
-      
+
+<div class="container">
+
+  <!-- Looping through news   -->
+  {% for images_item in images %}
         <div class="row">
           <!-- displaying images -->
           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <h2 class="text-center"> {{ images_item.name }} </h2>
+            <p class="text-center"> {{ images_item.description }} </p>
+            <p class="text-center"> {{ images_item.location }} </p>
+            <p class="text-center"> {{ images_item.category }} </p>
           </div>
+          
           <!--Display news Article images  -->
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <img src="{{images_item.image.url}}" class="img-responsive" alt="Image">
