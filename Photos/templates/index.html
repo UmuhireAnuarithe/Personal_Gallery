@@ -1,24 +1,53 @@
 {% extends 'all_Photos/base.html' %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  {% if title %}
+  <title>Photo-Gallery - {{title}}</title>
+  {% else %}
+  <title> Photo-Gallery </title>
+  {% endif %}
+</head>
+
 {% block content %}
 {{block.super}}
 
-  
+
+<div class="container">
+  <div class="jumbotron" style="background-color:bisque; 
+          border-radius: 50%;
+        border-right: 3px solid #d8f0f3;
+        border-bottom: 3px solid #dceef0;
+        text-align: center;
+        height: 100%;
+        width: 1;
+        margin-bottom: 3%;">
+
+    <p>Personal_Gallery is Gallery of Photos where a super user create and
+      post photos and simple user view posted photed photos .To view datails
+      of image you should click on single image and view its related imformation .
+    </p>
+  </div>
   <div class="row">
     {% for image in images %}
     <div class="col-md-4">
-      <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{image.image.url}}" class="img-thumbnail photo"alt="Image" data-toggle="modal" data-target="#{{image.id}}">
-      
+      <img style=" margin-top: 20px; margin-bottom: 20px; width:350px; height:300px;" src="{{image.image.url}}" class="img-thumbnail photo"
+        alt="Image" data-toggle="modal" data-target="#{{image.id}}">
+
       <!-- Image Details modal -->
 
       <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="imageTitle" aria-hidden="true">
-        <div  style="max-width:100%; max-height:100%; padding-top:100px;" class="modal-dialog" role="document">
+        <div style="max-width:100%; max-height:100%; padding-top:100px;" class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              
+
               <h5 class="modal-name" id="imageTitle">{{image.name}}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
             <div class="modal-body">
               <img src="{{image.image.url}}" style="width:570px; height:500px;" alt="Image">
@@ -26,16 +55,20 @@
               <p> Description : {{image.description}}</p>
               <p> Category : {{image.category}}</p>
               <p> Location : {{image.location}}</p>
-              
+
             </div>
-           
+
           </div>
         </div>
       </div>
 
     </div>
-        <!-- <h3 class="text-center">There are No Images</h3> -->
+    <!-- <h3 class="text-center">There are No Images</h3> -->
     {% endfor %}
   </div>
 </div>
+</div>
 {% endblock %}
+</body>
+
+</html>

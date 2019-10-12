@@ -18,11 +18,12 @@
     <link rel="stylesheet" href="{% static 'css/basephotos.css' %}">
   {% endblock %}
 </head>
-<body>
+<body id="bg" style="background-color:gainsboro">
     {% include "navbar.html" %}
     {% block content %}
-     <h1 class='text-center'>Welcome to personal Gallery</h1> 
+    <h1 class='text-center'>Welcome to personal Gallery</h1>
      
+  
     {%endblock%}
 
     {% block scripts %}
