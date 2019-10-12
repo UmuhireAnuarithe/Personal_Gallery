@@ -7,10 +7,10 @@ from .models import Image , Location ,Category
 
 def index(request):
     images = Image.objects.all()
-    locations = Location.objects.all()
+    # locations = Location.objects.all()
     categories = Category.objects.all()
     
-    return render(request,'index.html',{'images':images,'locations':locations,'categories':categories})
+    return render(request,'index.html',{'images':images,'categories':categories})
 
 def search_results(request):
 
@@ -27,16 +27,16 @@ def search_results(request):
 
 
 
-def display_location(request, location):
+def filter_location(request, location):
 
-    try:
-        location = Location.objects.get(id = location_id)
-        images = Location.objects.filter(location = location.id).all()
-    except ValueError:
-        # Raise 404 error when ValueError is thrown
-        raise Http404()
-        assert False
+    # try:
+    location = Location.objects.get(id = location_id)
+    images = Image.objects.filter(location = location.id).all()
+    # except ValueError:
+    #     # Raise 404 error when ValueError is thrown
+    #     raise Http404()
+    #     assert False
 
-    return render(request, 'all_Photos/location.html', {"location": location,'images':images})
+    return render(request, 'all_Photos/location.html', {"locations": location,'images':images})
 
 
