@@ -19,13 +19,6 @@ class Location(models.Model):
     def delete_location(self):
         self.delete()
 
-    def filter_location(cls, filter_locale):
-        """
-        Function to get image by location
-        """
-        location_of_images = Image.objects.filter(location__id=filter_locale)
-        return location_of_images
-
 class Category(models.Model):
     category = models.CharField(max_length =60)
     
@@ -67,3 +60,6 @@ class Image(models.Model):
 
     def delete(self):
         self.delete()
+
+
+    

@@ -7,6 +7,9 @@ class ImageTestClass(TestCase):
     # Set up method
     def setUp(self):
         self.animal= Image(image = 'passion.jpeg', name ='Animal', description='animal image')
+        self.technology = Category(category='Technology')
+        
+
         # Testing  instance
     def test_instance(self):
         self.assertTrue(isinstance(self.animal,Image))
@@ -33,13 +36,19 @@ class ImageTestClass(TestCase):
         cats =Image.objects.all()
         # self.assertTrue(len(cats) == 0)
 
-
+    def test_search_method(self):
+        self.technology.save_category()
+        images = Image.search_by_category('Technology')
+        self.assertTrue(len(images) == 0)
 
 class LocationTestClass(TestCase):
 
     # Set up method
     def setUp(self):
         self.kigali= Location(location ='Kigali')
+
+       
+        
         # Testing  instance
     def test_instance(self):
         self.assertTrue(isinstance(self.kigali,Location))
@@ -64,6 +73,7 @@ class LocationTestClass(TestCase):
         location = Location.objects.filter(location='Burera').first()
         locations = Location.objects.filter(id =location.id).delete()
         locations =Location.objects.all()
+    
 
 
 class CategoryTestClass(TestCase):
