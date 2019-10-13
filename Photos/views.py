@@ -29,14 +29,19 @@ def search_results(request):
 
 def filter_location(request, location):
 
-    # try:
-    location = Location.objects.get(id = location_id)
-    images = Image.objects.filter(location = location.id).all()
-    # except ValueError:
-    #     # Raise 404 error when ValueError is thrown
-    #     raise Http404()
-    #     assert False
+    locations = Location.objects.all()
+    images = Image.filter_location(location)
+    name = f'{location} Photos'
+    return render(request, 'location.html', {'title': title, 'images': images, 'locations': locations})
 
-    return render(request, 'all_Photos/location.html', {"locations": location,'images':images})
+    # # try:
+    # location = Location.objects.get(id = location_id)
+    # images = Image.objects.filter(location = location.id).all()
+    # # except ValueError:
+    # #     # Raise 404 error when ValueError is thrown
+    # #     raise Http404()
+    # #     assert False
+
+    # return render(request, 'all_Photos/location.html', {"locations": location,'images':images})
 
 
